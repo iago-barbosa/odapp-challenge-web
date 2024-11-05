@@ -6,3 +6,7 @@ export type PacienteProps = {
     cidade: String,
     estado: String
 }
+
+export type PacienteContextProps =  {
+    children: React.ReactNode;
+}

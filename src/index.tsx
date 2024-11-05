@@ -5,14 +5,17 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import { Routers } from './routes/routes';
+import { PacienteContextProvider } from './contexts/pacientes_contexts';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <Routers />
-  </React.StrictMode>
+  <PacienteContextProvider>
+    <React.StrictMode>
+      <Routers />
+    </React.StrictMode>
+  </PacienteContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

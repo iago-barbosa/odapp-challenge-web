@@ -1,0 +1,57 @@
+@import './../constants/variables.scss';
+
+.pacientes-container {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .paciente-item {
+        width: 100%;
+        border: 1px solid $secundary-background;
+        border-radius: 15px;
+        padding: 5px 10px;
+        color: $secundary-text;
+        font-size: 16px;
+
+        .paciente-name {
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+
+            .btn-chevron {
+                cursor: pointer;
+                font-size: 36px;
+                transition: transform 0.6s ease, opacity 0.6s ease;
+
+                &.up {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        .paciente-info {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out;
+            
+            &.open {
+                max-height: 450px;
+                opacity: 1;
+            }
+        }
+
+        .paciente-actions {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+
+            .btn-edit {
+                background-color: $secundary-background;
+                color: $primary-text;
+            }
+        }
+    }
+}
