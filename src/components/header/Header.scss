@@ -1,0 +1,132 @@
+@import '../constants/variables.scss';
+
+
+header {
+    display: grid;
+
+
+    .header-container {
+        width: 100%;
+        height: 60px;
+        background-color: $primary-background;
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 10px 0 10px;
+    
+        .menu-btn {
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            padding: 0;
+            color: $primary-text;
+            font-size: 40px;
+    
+            
+    
+            &:hover,
+            &:active {
+                color: $secundary-background;
+                border-color: $secundary-background;
+            }
+    
+            svg {
+                width: 100%;
+                vertical-align: top;
+            }
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 70%;
+            max-width: 250px;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background-color: $secundary-background;
+            z-index: 5;
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            
+            &.open {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        
+            &.close {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            .menu-header {
+                padding: 10px 10px 0 0;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                font-size: 30px;
+                color: $secundary-text;
+            }
+
+            .logo-container {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                color: $secundary-text;
+                align-items: center;
+
+                .logo {
+                    width: 100%;
+                    max-width: 125px;
+                }
+            }
+
+            .menu-items {
+                margin-top: 25px;
+
+                .item {
+                    display: grid;
+                    grid-template-columns: 1fr 3fr;
+                    padding: 10px;
+                    justify-items: center;
+                    align-items: center;
+                    color: $secundary-text;
+
+
+                    svg {
+                        font-size: 32px;
+                    }
+
+                    h3 {
+                        margin: 0;
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+
+        .menu-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #151e318c;
+
+            &.close {
+                display: none;
+            }
+        }
+    }
+
+    .border-header {
+        width: 100%;
+        margin-top: -1px;
+        height: auto;
+
+        
+    }
+
+}
