@@ -3,12 +3,16 @@
 
 footer {
     background-color: $primary-background;
-    min-height: 60px;
-    margin-top: -3px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
     color: $primary-text;
 
     h3 {
         margin: 0;
+        font-size: 16px;
+        color: $primary-text;
+        text-align: center;
     }
 }
 
