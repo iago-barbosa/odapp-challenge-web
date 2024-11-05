@@ -25,7 +25,9 @@ const Home = () => {
     return (
         <>
             <Header />
-            <p>Home</p>
+            <main>
+                <p>Home</p>
+            </ main>
             <Footer />
         </>
     );

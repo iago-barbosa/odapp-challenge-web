@@ -1,4 +1,3 @@
-import {ReactComponent as BorderFooter} from './../../assets/border-footer.svg';
 import './Footer.scss';
 
 export const Footer = () => {

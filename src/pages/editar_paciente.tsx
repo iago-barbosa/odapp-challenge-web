@@ -5,7 +5,9 @@ import Header from "../components/header/Header";
 const EditarPaciente = () => (
     <>
         <Header />
-        <p>Editar Paciente</p>
+        <main>
+            <p>Editar Paciente</p>
+        </main>
         <Footer />
     </>
 );
