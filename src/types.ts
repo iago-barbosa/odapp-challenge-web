@@ -1,5 +1,5 @@
 export type PacienteProps = {
-    id: number,
+    _id: number,
     nome: string,
     idade: number,
     dataCadastro: Date,

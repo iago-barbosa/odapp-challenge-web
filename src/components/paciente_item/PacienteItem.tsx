@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './PacienteItem.scss';
 import { format } from 'date-fns';
 import { ChevronDown, PencilSquare, Trash } from 'react-bootstrap-icons';
+import api from '../../services/api';
 
 const PacienteItem = (props: any) => {
     const {
@@ -9,6 +10,16 @@ const PacienteItem = (props: any) => {
     } = props
 
     const [isOpen, setOpen] = useState(false);
+
+    const deletar = (id: number) => {
+        api.delete(`/deletar-paciente/${id}`).then((res) => {
+            const {data, status} = res;
+
+            if(status === 200) {
+                alert(data.message);
+            }
+        })
+    }
 
     return (
         <div className="paciente-item">
@@ -24,7 +35,7 @@ const PacienteItem = (props: any) => {
             </div>
             <div className='paciente-actions'>
                 <button className='btn btn-edit'><PencilSquare/> Editar</button>
-                <button className='btn btn-danger'><Trash />Deletar</button>
+                <button className='btn btn-danger' onClick={() => deletar(paciente._id)}><Trash />Deletar</button>
             </div>
         </div>
     );
