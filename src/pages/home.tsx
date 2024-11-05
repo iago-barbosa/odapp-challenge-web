@@ -16,11 +16,6 @@ const Home = () => {
             }
         })
     }, [setPacientes]);
-
-    useEffect(() => {
-        console.log("aqui");
-        console.log(paciente);
-    }, [paciente]);
     
     return (
         <>
