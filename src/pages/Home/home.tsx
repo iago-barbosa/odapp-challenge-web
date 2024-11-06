@@ -11,7 +11,7 @@ import './home.scss';
 
 const Home = () => {
     const { paciente, setPacientes} = useContext(PacienteContexts);
-    const estadosObject: Record<string, number> = {};
+    let estadosObject: Record<string, number> = {};
     const [qtdPacientes, setQtdPacientes] = useState<number>(0);
     const [dadosEstado, setDadosEstado] = useState<EstadoProps[]>([]);
     const [dadosIdade, setDadosIdade] = useState<IdadeProps>({
@@ -42,6 +42,9 @@ const Home = () => {
                     maior: 0
                 }
 
+                if(Object.keys(estadosObject).length >0) {
+                    estadosObject = {};
+                }
                 data.forEach((paciente: PacienteProps) => {
                     estadosObject[paciente.estado] = (estadosObject[paciente.estado] || 0) + 1;
 
