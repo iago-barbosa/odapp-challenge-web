@@ -10,6 +10,17 @@
     .charts-container {
         display: grid;
         gap: 25px;
+
+        canvas {
+            width: 100% !important;
+        }
+
+        .chart-estado {
+            width: 100%;
+            height: auto;
+
+            
+        }
     }
 
     @media screen and (min-width: 768px){
@@ -27,6 +38,11 @@
             flex-direction: column;
             margin: 0 30px 30px 30px;
             width: calc(100% - 60px);
+
+            canvas {
+                width: auto !important;
+            }
+    
             .chart-estado {
                 max-width: 500px;
                 max-height: 700px;
