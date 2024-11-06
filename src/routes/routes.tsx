@@ -1,6 +1,6 @@
 import React from "react";
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from "../pages/home";
+import Home from "../pages/Home/home";
 import CadastrarPaciente from "../pages/cadastrar_paciente";
 import ListarPacientes from "../pages/listar_pacientes";
 import EditarPaciente from "../pages/editar_paciente";

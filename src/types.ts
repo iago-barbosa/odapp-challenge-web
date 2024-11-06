@@ -21,3 +21,18 @@ export type IbgeCidadesProps = {
     id: number,
     nome: string
 }
+
+export type EstadoProps = {
+    estado: string,
+    pacientes: number,
+    color: string
+}
+
+export type IdadeProps = {
+    ateCinco: number,
+    ateDez: number,
+    ateQuinze: number,
+    ateDezoito: number,
+    ateVinteECinco: number,
+    maior: number
+}

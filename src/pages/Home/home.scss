@@ -1,0 +1,40 @@
+.home {
+    display: grid;
+    gap: 40px;
+
+    .dados-container {
+        display: grid;
+        gap: 10px;
+    }
+
+    .charts-container {
+        display: grid;
+        gap: 25px;
+    }
+
+    @media screen and (min-width: 768px){
+        gap: 65px;
+
+        .dados-container {
+            margin: 0 30px;
+            width: calc(100% - 60px);
+            grid-template-columns: 1fr 1fr;
+
+        }
+
+        .charts-container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 30px 30px 30px;
+            width: calc(100% - 60px);
+            .chart-estado {
+                max-width: 500px;
+                max-height: 700px;
+            }
+
+            .chart-idade {
+                max-height: 800px;
+            }
+        }
+    }
+}
