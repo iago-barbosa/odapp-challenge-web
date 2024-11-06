@@ -1,4 +1,4 @@
-import { List, X, House, PCircle, Person } from 'react-bootstrap-icons';
+import { List, X, House, PlusCircle, Person } from 'react-bootstrap-icons';
 import './Header.scss';
 import {ReactComponent as BorderHeader } from './../../assets/border-header.svg';
 import logo from './../../assets/Logo-Passo-a-Passo.png';
@@ -35,7 +35,7 @@ export const Header = () => {
                             <h3>Home</h3>
                         </div>
                         <div className='item' onClick={() => goToPage('/cadastrar-paciente')}>
-                            <PCircle />
+                            <PlusCircle />
                             <h3>Cadastrar</h3>
                         </div>
                         <div className='item' onClick={() => goToPage('/pacientes')}>

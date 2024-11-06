@@ -6,7 +6,9 @@ import ListaPacientes from "../components/lista_pacientes/ListaPacientes";
 const ListarPacientes = () => (
     <>
         <Header />
-        <ListaPacientes />
+        <main>
+            <ListaPacientes />
+        </main>
         <Footer />
     </>
 );

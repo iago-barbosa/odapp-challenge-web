@@ -1,0 +1,60 @@
+@import './../constants/variables.scss';
+
+
+.form {
+    margin-top: 15px;
+
+    .inputs {
+        
+        &.disabled {
+            select {
+                background-color: $primary-background;
+                border-color: $secundary-background;
+                color: $secundary-background;
+
+                appearance: none;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                background-image: none;
+            }
+
+            label {
+                color: $secundary-background;
+                &::after {
+                    background-color: transparent;
+                }
+            }
+        }
+
+        input,
+        select
+        {
+            border-color: $secundary-text;
+            color: $secundary-text;
+
+            &:focus~label {
+                color: $secundary-text;
+            }
+        }
+
+        label  {
+            color: $secundary-text;
+        }
+    }
+
+    .btn-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .btn-cadastrar {
+            background-color: $secundary-background;
+            color: $secundary-text;
+            height: 55px;
+            width: 300px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 55px;
+        }
+    }
+}
