@@ -124,6 +124,82 @@ header {
                 display: none;
             }
         }
+
+        @media screen and (min-width: 768px) {
+            .menu {
+                opacity: 1;
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                max-width: 100%;
+                width: 100%;
+                height: fit-content;
+                background-color: transparent;
+
+                .logo-container {
+                    width: 100px;
+                    color: $primary-text;
+
+                    span {
+                        display: none;
+                    }
+                }
+
+                .menu-items {
+                    display: flex;
+                    width: calc(100% - 120px);
+                    justify-content: center;
+                    align-items: flex-start;
+
+                    .item {
+                        color: $primary-text;
+
+                        &:hover {
+                            color: $secundary-background;
+
+                            h3 {
+                                color: $secundary-background;
+                            }
+                        }
+
+                        h3 {
+                            color: $primary-text;
+                        }
+                    }
+                }
+
+                &.close {
+                    transform: none;
+                    opacity: 1;
+                }
+                .menu-header {
+                    display: none;
+                }
+            }
+            .menu-btn,
+            .menu-background {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .menu {
+                .logo-container {
+                    width: 100px;
+                    span {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 1400px) {
+            .menu {
+                .logo-container {
+                    width: 120px;
+                }
+            }
+        }
     }
 
     .border-header {

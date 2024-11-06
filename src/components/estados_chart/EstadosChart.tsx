@@ -2,6 +2,7 @@ import { EstadoProps } from "../../types";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title, ChartOptions } from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { useEffect, useRef } from "react";
 
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const EstadoChart = ({dadosEstados}:Props) => {
+    const chartRef = useRef<any>(null);
     ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels, Title);
 
     const geradorDeCores = () => {
@@ -40,6 +42,8 @@ const EstadoChart = ({dadosEstados}:Props) => {
     };
 
     const options: ChartOptions<'pie'> ={
+        responsive: true,
+        aspectRatio: 1,
         plugins: {
             legend: {
                 position: "top" as const,
@@ -47,7 +51,7 @@ const EstadoChart = ({dadosEstados}:Props) => {
             datalabels: {
                 color: "#000",
                 anchor: "center",
-                align: "start",
+                align: "left",
                 borderWidth: 2,
                 font: {
                     size: 36,

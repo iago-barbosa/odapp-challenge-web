@@ -53,5 +53,44 @@
                 color: $primary-text;
             }
         }
+
+        @media screen and (min-width: 768px) {
+            display: grid;
+            grid-template-areas: 
+            "name actions"
+            "info actions"
+            ;
+
+
+            .paciente-name {
+                cursor: default;
+                grid-area: name;
+
+                .btn-chevron {
+                    display: none;
+                }
+            }
+
+            .paciente-info {
+                opacity: 1;
+                max-height: 450px;
+                grid-area: info;
+            }
+
+            .paciente-actions {
+                flex-direction: column;
+                grid-area: actions;
+                align-items: flex-end;
+
+                .btn {
+                    width: 100px;
+
+                    &.btn-edit:hover {
+                        background-color: $primary-background;
+                        color: $primary-text;
+                    }
+                }
+            }
+        }
     }
 }
