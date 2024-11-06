@@ -1,21 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
+import { ArrowLeftCircle } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router-dom';
-import './CadastrarNovoPaciente.scss';
 import ibge from '../../services/ibge';
 import api from '../../services/api';
+import './AlterarPaciente.scss';
 import { IbgeCidadesProps, IbgeEstadosProps } from '../../types';
 import { PacienteContexts } from '../../contexts/pacientes_contexts';
 
-const CadastrarNovoPaciente = () => {
-    const { setPacientes } = useContext(PacienteContexts);
+const AlterarPaciente = () => {
+    const { selectedPaciente, setPacientes} = useContext(PacienteContexts);
     const [uf, setUf ] = useState<string>('');
     const [estados, setEstados] = useState<IbgeEstadosProps[]>([]);
     const [cidades, setCidades] = useState<IbgeCidadesProps[]>([]);
-    const [nome, setNome] = useState<string>('');
-    const [idade, setIdade] = useState<number>(0);
-    const [estado, setEstado] = useState<string>('');
-    const [cidade, setCidade] = useState<string>('');
+    const [nome, setNome] = useState<string>(selectedPaciente ? selectedPaciente.nome : '');
+    const [idade, setIdade] = useState<number>(selectedPaciente ? selectedPaciente.idade : 0);
+    const [estado, setEstado] = useState<string>(selectedPaciente ? selectedPaciente.estado : '');
+    const [cidade, setCidade] = useState<string>(selectedPaciente ? selectedPaciente.cidade : '');
     const navigate = useNavigate();
 
     const goToPage = (page: string) => {
@@ -27,9 +28,15 @@ const CadastrarNovoPaciente = () => {
             const { data, status} = res;
             if(status === 200) {
                 setEstados(data);
+                if (selectedPaciente && selectedPaciente.estado) {
+                    const estadoEncontrado = data.find((estado: IbgeEstadosProps) => estado.nome === selectedPaciente.estado);
+                    if (estadoEncontrado) {
+                        setUf(estadoEncontrado.sigla);
+                    }
+                }
             }
         });
-    }, []);
+    }, [selectedPaciente]);
 
     useEffect(() => {
         if(uf !== "") {
@@ -42,7 +49,7 @@ const CadastrarNovoPaciente = () => {
         }
     }, [uf]);
 
-    const cadastrarPaciente = (e: React.FormEvent) => {
+    const atualizarPaciente = (e: React.FormEvent) => {
         e.preventDefault();
 
         if(nome.trim() === '' || idade === 0 || cidade.trim()  === '' || estado.trim()  === '') {
@@ -55,22 +62,21 @@ const CadastrarNovoPaciente = () => {
                 estado
             }
     
-            api.post('/novo-paciente', data).then((res) => {
+            api.put(`/atualizar-paciente/${selectedPaciente?._id}`, data).then((res) => {
                 const {status} = res;
     
-                if(status === 201) {
-                    alert("Dados Cadastrados");
+                if(status === 200) {
+                    alert("Dados Atualizados");
                     api.get('/lista-pacientes').then((res) => {
                         const { data, status } = res;
                         if(status === 200) {
                             setPacientes(data);
-                            goToPage('/');
+                            goToPage('/pacientes');
                         }
-                    })
+                    });
                 }
             })
         }
-
 
     }
 
@@ -78,10 +84,11 @@ const CadastrarNovoPaciente = () => {
 
     return(
         <>
+            <ArrowLeftCircle className='voltar' onClick={() => goToPage('/pacientes')} />
             <h3>
-                Cadastrar Paciente
+                Alterar Paciente
             </h3>
-            <Form className='form' onSubmit={cadastrarPaciente}>
+            <Form className='form' onSubmit={atualizarPaciente}>
                 <FloatingLabel label="Nome Completo" className='mb-3 inputs'>
                     <Form.Control 
                         type='text' 
@@ -106,6 +113,7 @@ const CadastrarNovoPaciente = () => {
                             setUf(e.target.value);
                             setEstado(e.target.options[e.target.selectedIndex].text);
                         }}
+                        value={uf}
                     >
                         <option value="">Selecione o estado</option>
                         {estados.map((estado) => (
@@ -130,7 +138,7 @@ const CadastrarNovoPaciente = () => {
                 </FloatingLabel>
                 <div className='btn-container'>
                     <button className='btn btn-cadastrar' type='submit'>
-                        Realizar Cadastro
+                        Atualizar
                     </button>
                 </div>
 
@@ -143,5 +151,5 @@ const CadastrarNovoPaciente = () => {
     )
 }
 
-export default CadastrarNovoPaciente;
+export default AlterarPaciente;
 

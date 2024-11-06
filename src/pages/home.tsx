@@ -6,7 +6,7 @@ import api from "../services/api";
 import { PacienteContexts } from "../contexts/pacientes_contexts";
 
 const Home = () => {
-    const { paciente, setPacientes} = useContext(PacienteContexts);
+    const { setPacientes} = useContext(PacienteContexts);
 
     useEffect(() => {
         api.get('/lista-pacientes').then((res) => {
